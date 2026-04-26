@@ -26,7 +26,10 @@ jobs:
                    username: ${{secrets.EC2_USER}}
                    key: ${{secrets.EC2_SSH_KEY}}
                    script: |
-                       cd /home/ubuntu/app || git clone https://github.com/mdhinakar608/CI-CD-Deployment-to-Server-ec2-project app
+                       cd /home/ubuntu
+                       if [ ! -d "app" ]; then
+                         git clone https://github.com/mdhinakar608/CI-CD-Deployment-to-Server-ec2-project app
+                       fi
                        cd app
                        git pull
                        if [ ! -d "venv" ]; then
