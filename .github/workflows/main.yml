@@ -37,5 +37,5 @@ jobs:
                        fi
                        source venv/bin/activate
                        pip3 install -r requirements.txt
-                       pkill -f app.py || true
+                       fuser -k 5000/tcp || true
                        nohup python3 app.py > output.log 2>&1 &
